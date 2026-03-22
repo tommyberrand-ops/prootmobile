@@ -1,4 +1,4 @@
-/* style.css - Version avec menu prompt flottant pour mobile */
+/* style.css - Version responsive sans menu flottant */
 
 * {
     margin: 0;
@@ -596,148 +596,29 @@ footer {
     font-size: 0.9em;
 }
 
-/* ===== MENU PROMPT FLOTTANT POUR MOBILE ===== */
-@media (max-width: 1000px) {
-    .right-col {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        background: rgba(0, 0, 0, 0.95);
-        backdrop-filter: blur(15px);
-        border-radius: 20px 20px 0 0;
-        padding: 15px;
-        max-height: 70vh;
-        overflow-y: auto;
-        transform: translateY(100%);
-        transition: transform 0.3s ease;
-        box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.5);
-        border-top: 2px solid #00f3ff;
-    }
-    
-    .right-col.open {
-        transform: translateY(0);
-    }
-    
-    .prompt-toggle {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1001;
-        background: linear-gradient(135deg, #00f3ff, #b537f2);
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        box-shadow: 0 5px 20px rgba(0, 243, 255, 0.4);
-        transition: all 0.3s;
-        border: none;
-        color: white;
-        font-size: 1.5em;
-    }
-    
-    .prompt-toggle:hover {
-        transform: scale(1.1);
-        box-shadow: 0 5px 25px rgba(0, 243, 255, 0.6);
-    }
-    
-    .prompt-close {
-        position: fixed;
-        bottom: 90px;
-        right: 20px;
-        z-index: 1002;
-        background: rgba(255, 255, 255, 0.2);
-        border: none;
-        color: white;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        cursor: pointer;
-        font-size: 1.2em;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        backdrop-filter: blur(5px);
-        transition: all 0.3s;
-    }
-    
-    .prompt-close:hover {
-        background: rgba(255, 0, 0, 0.6);
-        transform: scale(1.1);
-    }
-    
-    .right-col .result-card {
-        height: auto;
-        max-height: 60vh;
-        overflow-y: auto;
-    }
-    
-    .right-col .result-header {
-        padding-right: 40px;
-    }
-    
-    .main-content {
-        padding-bottom: 80px;
-    }
-    
-    footer {
-        margin-bottom: 20px;
-        position: relative;
-        z-index: 10;
-    }
-    
-    /* Ajustement pour que le footer ne soit pas masqué */
-    .container {
-        padding-bottom: 20px;
-    }
-}
-
-@media (max-width: 1000px) and (orientation: landscape) {
-    .right-col {
-        max-height: 85vh;
-    }
-    
-    .right-col .result-card {
-        max-height: 75vh;
-    }
-}
-
-/* RESPONSIVE GÉNÉRAL */
+/* ===== RESPONSIVE SANS MENU FLOTTANT ===== */
 @media (max-width: 1000px) {
     .main-content {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .right-col {
-        position: static;
+        position: relative;
+        top: auto;
+        height: auto;
+        margin-top: 0;
     }
     
-    /* Annuler le fixed pour le responsive normal (géré par le media query au-dessus) */
-    .right-col {
-        position: fixed;
+    .characters-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
     
-    .prompt-toggle {
-        display: flex;
+    footer {
+        margin-top: 20px;
     }
 }
 
-@media (min-width: 1001px) {
-    .prompt-toggle, .prompt-close {
-        display: none !important;
-    }
-    
-    .right-col {
-        position: sticky;
-        transform: none !important;
-    }
-}
-
-/* SMARTPHONES - AJUSTEMENTS FINAUX */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -756,18 +637,22 @@ footer {
     }
     
     .characters-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 5px;
-    }
-    
-    .character-card {
-        font-size: 0.7em;
-        padding: 5px;
+        grid-template-columns: repeat(2, 1fr);
     }
     
     .checkbox-grid {
         grid-template-columns: 1fr;
         gap: 8px;
+    }
+    
+    .color-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .number-group {
+        flex-direction: column;
+        gap: 10px;
     }
     
     .btn, .generate-btn {
@@ -816,24 +701,8 @@ footer {
         font-size: 0.7em;
         padding: 15px;
     }
-    
-    .prompt-toggle {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2em;
-        bottom: 15px;
-        right: 15px;
-    }
-    
-    .prompt-close {
-        bottom: 75px;
-        right: 15px;
-        width: 35px;
-        height: 35px;
-    }
 }
 
-/* TRÈS PETITS ÉCRANS (iPhone SE, etc.) */
 @media (max-width: 480px) {
     .characters-grid {
         grid-template-columns: repeat(2, 1fr);
