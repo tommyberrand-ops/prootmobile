@@ -11,7 +11,6 @@
 // CORRIGÉ : Annulation des gestes mains en mode selfie (mains occupées)
 // CORRIGÉ : Annulation des gestes mains en mode miroir (règle absolue)
 // CORRIGÉ : Bouton traduction fonctionnel
-// MODIFIÉ : Suppression du code de menu flottant pour mobile
 
 console.log("🚀 Chargement de script.js - Version FUSIONNÉE ULTIME...");
 
@@ -490,16 +489,31 @@ SECONDE 5-6 : FINALE - ${poseFinale === 'cote_a_cote' ? 'côte à côte, main da
         return `\nEFFETS SPECTACULAIRES AVANCÉS (${surpriseText}) : ${effects.join(', ')}.`;
     }
 
-    // ===== MODE SELFIE - VERSION SIMPLIFIÉE (avec guillemets auto) =====
-    generateSelfieMode() {
-        if (!document.getElementById('enableSelfieMode')?.checked) return '';
-        
-        const dialoguePart = this.generateSelfieDialogue();
-        const danceStyle = document.getElementById('selfieDanceStyle')?.value || 'sensuelle';
-        const danceDesc = selfieDances[danceStyle]?.description || 'ondulations sensuelles';
+// ===== MODE SELFIE - VERSION AMÉLIORÉE AVEC BOUCHAGE OBJECTIF =====
+generateSelfieMode() {
+    if (!document.getElementById('enableSelfieMode')?.checked) return '';
+    
+    const dialoguePart = this.generateSelfieDialogue();
+    const danceStyle = document.getElementById('selfieDanceStyle')?.value || 'sensuelle';
+    const danceDesc = selfieDances[danceStyle]?.description || 'ondulations sensuelles';
 
-return `c'est un selfie son bras reste tendue${dialoguePart ? ` elle dit${dialoguePart}` : ''} en dansant (${danceDesc}), a la 5 e seconde elle embrasse l'objectif TRES PRES jusqu'a boucher completement l'objectif (ca evite le flash), la video fait un flash noir et s'arrete`;
-    }
+    return `c'est un selfie son bras reste tendue${dialoguePart ? ` elle dit${dialoguePart}` : ''} en dansant (${danceDesc}).
+
+🎬 INSTRUCTION SPÉCIALE - FINALE SELFIE (dernière seconde) :
+À LA SECONDE 5 EXACTEMENT :
+- Elle rapproche son visage TRÈS LENTEMENT de l'objectif
+- Ses lèvres s'approchent jusqu'à TOUCHER l'objectif
+- Les lèvres viennent COLLER à l'objectif
+- ON VOIT LES DÉTAILS ULTRA-MACRO DES LÈVRES : ridules, brillant, humidité, texture de la peau
+- Les lèvres BOUCHENT COMPLÈTEMENT L'OBJECTIF (plus aucune image visible)
+- L'écran devient NOIR (pas de flash)
+- FIN DE LA PARTIE 1
+
+IMPORTANT - TRANSITION VERS LA PARTIE 2 :
+- Pendant cet écran noir, elle pose son téléphone
+- La PARTIE 2 commencera avec un angle de caméra FIXE (téléphone posé)
+- Ses deux mains sont LIBRES pour danser`;
+}
 
     // ===== COLLECTE DES DONNÉES =====
     collectUserData() {
