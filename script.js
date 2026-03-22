@@ -11,6 +11,7 @@
 // CORRIGÉ : Annulation des gestes mains en mode selfie (mains occupées)
 // CORRIGÉ : Annulation des gestes mains en mode miroir (règle absolue)
 // CORRIGÉ : Bouton traduction fonctionnel
+// MODIFIÉ : Suppression du code de menu flottant pour mobile
 
 console.log("🚀 Chargement de script.js - Version FUSIONNÉE ULTIME...");
 
